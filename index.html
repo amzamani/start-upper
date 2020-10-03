@@ -9,6 +9,26 @@
 
 </head>
 <body>
+	<script>
+		$('.searchbar-text').on('focus', (evt) => {
+			$(evt.currentTarget).parents('.searchbar').addClass('active');
+		});
+
+		$('.searchbar-text').on('focusout', (evt) => {
+			$(evt.currentTarget).parents('.searchbar').removeClass('active');
+		});
+
+		function myfunction (e) {
+			var key = e.which;
+			if (key == 13)  // the enter key code
+			{
+				var text = $('.searchbar-text').val();
+				var query = text.replace(/\s/g, '+');
+				window.open('http://www.google.com/search?q=' + query, '_blank');
+			}
+		}; 
+		myfunction();
+	</script>
 <center>
     <br>
     <br>
@@ -23,10 +43,10 @@
 				align-items: center;
 				/*   border: 1px solid; */
 				flex-wrap: wrap;"></a>
-		<div class="searchbar">
+		<!-- <div class="searchbar">
 			<img height="40px" width="40px" src="https://img.icons8.com/cotton/64/000000/search--v2.png"/>
-			<input type="text" class="searchbar-text" placeholder="Search Google or type a URL">
-		</div>
+			<input type="text" class="searchbar-text" id= "searching" onkeypress="myFunction()" placeholder="Search Google or type a URL">
+		</div> -->
 
 		<div class="google-apps-wrapper">
             <a href="https://amzn.to/2XElgjk" target="_blank">
@@ -247,25 +267,7 @@
 				font-size: 12px;
 			}
 		</style>
-		<script>
-			$('.searchbar-text').on('focus', (evt) => {
-				$(evt.currentTarget).parents('.searchbar').addClass('active');
-			});
-
-			$('.searchbar-text').on('focusout', (evt) => {
-				$(evt.currentTarget).parents('.searchbar').removeClass('active');
-			});
-
-			$('.searchbar-text').keypress(function (e) {
-				var key = e.which;
-				if (key == 13)  // the enter key code
-				{
-					var text = $('.searchbar-text').val();
-					var query = text.replace(/\s/g, '+');
-					window.open('http://www.google.com/search?q=' + query, '_blank');
-				}
-			}); 
-		</script>
+	
     
 </body>
 </html>
